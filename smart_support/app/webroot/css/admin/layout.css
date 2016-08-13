@@ -1,0 +1,158 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	transition: all 0.1s ease-in-out;
+}
+.sidebar {
+	width:60px;
+	height:100vh;
+	background-color: #263238;
+	position: fixed;
+	display: block;
+	overflow : hidden;
+	z-index: 8;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+}
+.sidebar:hover {
+	width: 250px;
+}
+.sidebar:hover .icons .span {
+	display: inline;
+}
+.head {
+	width:100%;
+	height:50px;
+	padding-top: 14px;
+	cursor: pointer;
+	text-align: center;
+	color: #fafafa;
+	font-size: 12px;
+	background-color: #455a64;
+}
+.gap30 {
+	width:100;
+	height:30px;
+}
+.icons {
+	width: 250px;
+	height:45px;
+	padding-left: 21px;
+	padding-top: 13px;
+	color:#ffffff;
+	cursor: pointer;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+}
+.icons.active{
+	background: #37474f;
+}
+
+.icons>i {
+	width: 10px;
+}
+.span {
+	padding-left: 0px;
+	font-weight: 500;
+	width:150px;
+	display: none;
+	margin-left: 30px;
+}
+.icons:hover {
+	background-color: #37474f; 
+}
+.main-body {
+	width:100%;
+	min-height: 100vh;
+	height: 100%;
+	padding-left:70px;
+	padding-top: 10px;
+	background-color: #f3f3f3;
+}
+header {
+	height:40px;
+	margin-right: 10px;
+	background-color: #fff;
+	padding-left: 10px;
+	border-radius: 10px;
+}
+.left {
+	float: left;
+}
+.right {
+	float:right;
+}
+.logo-image {
+	height:40px;
+	padding-top: 5px;
+}
+.username {
+	color : #000;
+	font-weight: 500;
+}
+.down {
+	padding-top: 10px;
+	padding-right: 10px;
+}
+.container {
+	width: 90% !important;
+}
+.gap10 {
+	width: 100%;
+	height:10px;
+}
+.gap20 {
+	width: 100%;
+	height:20px;
+}
+.gap30 {
+	width: 100%;
+	height:30px;
+}
+.gap40 {
+	width:100%;
+	height:40px;
+}
+.setting-icon {
+	font-size: 20px;
+	line-height: 0px;
+	color : #000;
+}
+
+.pageLoading {
+	text-align: center;
+    width: 85%;
+    top: 30%;
+    position: absolute;
+}
+
+.progressbar{
+	position: absolute;
+    width: 100%;
+    top: -8px;
+    left: 0;
+}
+
+.notificationFlag{
+	position: relative;
+    top: -25px;
+    right: -13px;
+    height: 7px;
+    font-size: 13px;
+    width: 7px;
+    border-radius: 30px;
+    background: #11a339;
+}
+.notificationFlag.seen{
+	display: none;
+}
+.notificationFlag.unseen{
+	display: block;
+}
+@media only screen and (min-width: 993px){
+	#toast-container {
+	    top: 40px;
+	    right: 10px;
+	    max-width: 86%;
+	}
+}

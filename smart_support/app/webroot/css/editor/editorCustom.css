@@ -1,0 +1,139 @@
+.editor
+{
+	width: 100%;
+	margin-top: 5%;
+	height: auto;
+}
+.editor #welcome
+{
+	margin-left: 17%;
+	width: 65%;
+}
+#contentEditing .modal-content
+{
+	border: none;
+}
+
+#contentEditing .modal-header
+{
+	background: #11A339;
+	text-align: center;
+	border: none;
+}
+
+#contentEditing .modal-body>h2
+{
+	border-bottom: solid 1px #fff;
+}
+#contentEditing .modal-body table tr td,
+#contentEditing .modal-body table tr th
+{
+	border: none;
+	padding-bottom: 0;
+}
+
+#contentEditing table .alert
+{
+	padding: 6px 0px;
+    color: #fff;
+    background: #ec971f;
+    width: auto;
+}
+
+#contentEditing .editorApproval .modal-body .demo label
+{
+	width: 48%;
+}
+
+
+
+/*********************************/
+/*       UPLOAD BUTTON           */
+/*********************************/
+#selectedFile {  
+	width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+#uploadbutton div {
+	height: 100px;
+    width: 100px;
+    background: #337AB7;
+    border-radius: 65px;
+}
+
+#uploadbutton div span {
+	font-size: 45px;
+    top: 26px;
+    left: 3px;
+    color: #fff;
+}
+#uploadbutton label{
+	cursor: pointer;
+}
+#uploadbutton label:hover div{
+	background: #265A88;
+}
+
+.rating-menu{
+	font-size: 10px;
+	border-bottom: solid 1px #E0E0E0;
+    padding: 2% 3% 1% 5%;
+}
+
+
+.table-striped>tbody>tr>td{
+	vertical-align: middle;
+	padding-bottom: 14px;
+    padding-top: 14px;
+}
+
+.table-striped>tbody>tr>td:nth-child(1), .table-striped>tbody>tr>td:nth-child(4){
+	text-align: left;
+}
+
+.samplepreview .modal-body .tab-content>div>p{
+	background: #737c84;
+    padding: 5px 15px;
+    color: #fff;
+    min-height: 119px;
+    word-wrap: break-word;
+}
+
+.alert {
+    margin-bottom: 0px; 
+}
+
+.revision .modal-body{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.revision .modal-body .row{
+	background: #1a1f29;
+    height: 300px;
+	min-height: 400px;    
+	color: #fff;
+    padding: 26px 30px;
+    font-size: 16px;
+}
+
+.gap10 {
+	width:100%;
+	height:10px;
+}
+
+
+.gap20 {
+	width:100%;
+	height:20px;
+}
+
+
+.gap30 {
+	width:100%;
+	height:30px;
+}

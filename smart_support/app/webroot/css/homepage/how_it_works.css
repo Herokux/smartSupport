@@ -1,0 +1,131 @@
+#section1>div{
+	color: #fff;
+	text-align: center;
+	padding: 10% 5% 0% 5%;
+}
+#section1{
+	background: url(../../img/how_it_works/How%20it%20works.jpg);
+	background-size: cover;
+}
+
+#section1>div>div{
+	padding: 0 3% 0 3%;
+}
+#section1>div>#col2{
+	border-right: solid 2px #fff;
+	border-left: solid 2px #fff;
+}
+
+#section1>div>#header{
+	padding-bottom: 3%;
+	width: 76%;
+}
+#section1>div>#order_now>a{
+	margin-top: 6%;
+}
+.image-text-box {
+	width: 100%;
+	padding-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 100px;
+}
+.image-text-box .row {
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;	
+}
+.odd {
+	background-color: #f1f1f1;
+}
+.image-container {
+	max-height: 350px;
+	max-width: 350px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+.image-container img {
+	width: 100%;
+	height: 100%;
+}
+.mytext {
+	padding-left: 20px !important;
+	padding-top: 50px !important;
+}
+.mytext h4 {
+	font-size: 35px;
+}
+.mytext h6 {
+	font-size: 17px;
+	line-height: 30px;
+}
+.fix {
+	max-width: 250px;
+}
+.some-line-section {
+	width: 100%;
+	padding-top: 100px;
+	padding-bottom: 150px;
+	text-align: center;
+	background-color: #11A336;
+}
+.gap50 {
+	width:100%;
+	height: 50px;
+}
+.last-section {
+	width: 100%;
+	height: auto;
+	margin-bottom: 100px;
+}
+.zip {
+	height: auto;
+	margin-top: 100px;
+	margin-bottom: 10px;
+}
+.boxes {
+	width: 220px;
+	height: 250px;
+	text-align: center;
+	font-size: 16px;
+	color: rgba(0,0,0,0.75);
+	margin-left: 30px;
+	margin-right: 50px;
+}
+.boxes img {
+	width: 100%;
+}
+div.row:nth-child(2) > div:nth-child(1) {
+	margin-top: -5px;
+}
+div.row:nth-child(2) > div:nth-child(2) {
+	margin-top: -5px;
+}
+.center {
+	margin-top: 50px;
+}
+@media screen and (max-width: 600px) {
+	.right {
+		float: none !important;
+	}
+	.left {
+		float: none !important;
+	}
+	.boxes {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	div.row:nth-child(1) > div:nth-child(2) {
+		margin-top: -5px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.mytext {
+		padding-left: 10px !important;
+	}
+	.image-text-box {
+		padding-top: 50px;
+	}
+}

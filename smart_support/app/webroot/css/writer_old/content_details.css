@@ -1,0 +1,32 @@
+.card-table{
+	/*margin-left: -5%;*/
+	padding: 2% 3% 3% 4%;
+}
+.card-table>table{
+	margin-left: 5%;
+	width: 95%;
+}
+.card-table table tr{
+	border-bottom: solid 1px #eee;
+	width: 70%;
+}
+.card-table table tr td{
+	padding: 2% 0 2% 0%;
+}
+.card-table table tr:nth-child(14){
+	border-bottom: none;
+}
+.card-table h5{
+	font-size: 22px;
+	font-weight: 600;
+}
+.card-small{
+	padding: 2% 4% 3% 4%;
+}
+.card-small h6{
+	text-align: left;
+	margin: 0 5%;
+}
+#correction{
+	margin: 0 8%;
+}

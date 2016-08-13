@@ -1,0 +1,350 @@
+/* css for this profile layout starts here */
+
+.background-wallpaper {
+	width : 100%;
+	height:200px;
+	margin-top: 20px;
+	padding-top: 85px;
+	background-image: url(../../img/Writer/cover-default.png);
+	background-size: cover;
+	background-position: center;
+}
+.gap40 {
+	width: 100%;
+	height: 40px;
+}
+.gap20 {
+	width: 100%;
+	height: 20px;
+}
+.profile-image {
+	width : 120px;
+	height:120px;
+	background-color: #821080;
+	margin-right: auto;
+	margin-left: auto;
+}
+.profile-photo {
+	width :100%;
+	height:100%;
+	background: #f3f3f3;
+}
+.profile-name {
+	width : 100%;
+	height:35px;
+	background-color: #ffffff;
+	color: rgba(0,0,0,0.6);
+	z-index: -1;
+	margin-top: -5px;
+	padding-top: 10px;
+	text-align: center;
+}
+.profile-info {
+	margin-top: 70px;
+}
+.general-info {
+	width:80%;
+	height:100%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ffffff;
+	margin-bottom: 20px;
+}
+.general-info-heading {
+	width : 100%;
+	height:40px;
+	background-color: #11a339;
+	text-align: center;
+	color: #fff;
+	font-weight: 500;
+	font-size: 22px;
+	padding-top: 3px;
+	padding-left: 25px;
+}
+.pencil {
+	padding-top: 5px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+.profile-basic-information {
+	width : 100%;
+	height:calc(100% - 40px);
+	padding-left: 30px;
+	padding-right: 20px;
+	font-size: 15px;
+	padding-bottom: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+table tbody tr td {
+	padding:10px 5px;
+}
+.avilable-options {
+	width:90%;
+	height:100%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+}
+.nav-tabs {
+	width :100%;
+	height:40px;
+	background-color: #fff;
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+.nav-tabs .button {
+	width : 33.333%;
+	height:100%;
+	background: transparent;
+    position: relative;
+    border: none;
+    z-index: 5;
+}
+.nav-tabs .button .active {
+    color: #fff;
+    background: transparent;
+    position: relative;
+    border: none;
+    z-index: 5;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-tabs .button .active:hover{
+	color: #ededed;
+}
+
+.nav-tabs .button>a{
+	color: #000;
+	font-family: "Roboto", sans-serif;
+	line-height: 44px;
+	font-size: 14px;
+}
+.nav-tabs .button>a:hover{
+	color: #7d7d7d;
+}
+.nav-tabs .indicator{
+    left: 0px;
+    height: 100%;
+    background: #11a339;
+}
+.button:focus {
+	border:none;
+	outline: none;
+}
+.skill-set, .content-reference, .claim-job {
+	width : 100%;
+	height:100%;
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+.claim-job{
+	padding-top: 3%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.circles {
+	width : 100px;
+	height:100px;
+	background-color: #fff;
+	border-radius: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.circles-content {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.gold-skill {
+	border:7px solid #ffcc00;
+}
+.bronze-skill {
+	border:7px solid brown;
+}
+.silver-skill {
+	border:7px solid silver;
+}
+.circles-contents {
+	text-align: center;
+	margin-bottom: 25px;
+}
+.content-reference-text {
+	width : 80%;
+	margin-right: auto;
+	margin-left: auto;
+	height: auto;
+	min-height: 300px !important;
+}
+.content-reference-text textarea {
+	width:100%;
+	min-height: 300px !important;
+	height: 100%;
+	padding : 10px;
+	border: 1px solid #ccc;
+}
+.content-update {
+	background-color: #aaa;
+	border: 1px solid #aaa;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #fff;
+}
+#content-reference {
+	margin-bottom: 30px;
+}
+
+.profile-basic-information .editable{
+	padding: 0;
+}
+
+input[type=text]:disabled {
+    color: #000;
+    border: none;
+    height: auto;
+    margin-top: 15px;
+}
+
+#profileUpdate{
+	display: none;
+}
+#Bronze,#Silver,#Gold,#Platinum {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  color : #ffcc00;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10px !important;
+}
+.upgrade {
+	width : 100%;
+}
+.Bronze .circle {
+	stroke:#ce7f30 ;
+}
+.Silver .circle {
+	stroke:#c0c0c0 ;
+}
+.Gold .circle {
+	stroke:#fbe96a ;
+}
+.Platinum .circle {
+	stroke:#e3e1ef ;
+}
+
+.outer {
+    fill: transparent;
+    stroke: #333;
+    stroke-width: 19.8;
+    stroke-dasharray: 534;
+    transition: stroke-dashoffset 1s;
+    -webkit-animation-play-state: running;
+    /* firefox bug fix - won't rotate at 90deg angles */
+    -moz-transform: rotate(-89deg) translateX(-190px);
+}
+
+/* full circle 25 empty 534 */
+.inner {
+    fill: transparent;
+    stroke: orange;
+    stroke-width: 20;
+    stroke-dasharray: 534;
+    transition: stroke-dashoffset 1s;
+    -webkit-animation-play-state: running;
+    -moz-transform: rotate(-89deg) translateX(-190px);
+    stroke-dashoffset: 0;
+}
+.circliful {
+    overflow: visible !important;
+}
+.svg-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: visible;
+}
+svg .icon {
+    font-family: FontAwesome;
+}
+.specialization-box {
+	width: 80% !important;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ffffff;
+	margin-bottom: 100px;
+	margin-bottom: 250px;
+	padding-bottom: 40px;
+}
+.specialization-head {
+	width: 100%;
+    height: 40px;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+    background-color: #11a339;
+}
+.specialization-info {
+	width: 90%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	margin-top: 20px;
+	padding: 5px;
+	padding-left: 10px;
+	text-align: justify;
+	color: rgba(0,0,0,0.75);
+}
+.width-fix {
+	width: 90%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	padding: 5px;
+	padding-left: 10px;
+}
+.block-feild {
+	width:50%;
+	height: 40px;
+	background-color: #eee;
+	border: 1px solid #aaa;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 1px;
+	padding: 8px;
+  padding-left: 14px;
+  padding-right: 10px;
+  color: rgba(0,0,0,0.45);
+}
+#insert-chip {
+	width: 100%;
+	height: 100%;
+}
+.chip {
+	height: 35px !important;
+	font-size: 15px !important;
+	color: #ffffff !important;
+	font-weight: 500 !important;
+	padding: 2px 15px !important;
+	background-color: #0ccc6a !important;
+	margin-left: 5px !important;
+	margin-bottom: 15px;
+}
+.hidden {
+	display: none;
+}
+.button-spec {
+	width: 100%;
+}
+.modal {
+	width: 300px !important;
+}
