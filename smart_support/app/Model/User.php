@@ -27,14 +27,6 @@ class User extends AppModel
 	        )
 	    );
 
-	    public $belongsTo=array(
-			'Writer'=>array(
-				'className'=>'Writer',
-				'foreignKey'=>'id',
-				'dependent'=>true
-				)
-		
-		);
 	    public function validate_passwords() {
 		    return $this->data[$this->alias]['password'] === $this->data[$this->alias]['cpassword'];
 		}
@@ -49,22 +41,7 @@ class User extends AppModel
 	        return true;
 	    }
 
-	    public function currentUserName($userID = null, $userType = null){
-	    	$typeArray = ["Writer"];
-	    	if (($userID != null) && (in_array($userType, $typeArray))) {
-	    		$conditions = array( 
-					$userType.'.id' => $userID
-				);
-				
-				if($userType == 'Writer') {
-					$currentUser = $this->Writer->find('first', array(
-						'conditions'=> $conditions,
-						'fields'=>array('firstname', 'lastname')
-					));
-					return $currentUser[$userType]['firstname'] . " " . $currentUser[$userType]['lastname'];
-				}			
-			}
-	    }
+
 
 }
 
