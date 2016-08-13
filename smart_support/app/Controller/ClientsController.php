@@ -69,6 +69,14 @@
             $this->layout='ajax';
             // $this->set('activeUser',$this->Session->read('Auth'));
         }
+
+
+        public function clientIncomingMessages(){
+        	$this->autoRender = false;
+        	$clientID = $this->Auth->user('id');
+        	$clientMessages = $this->Client->findUnreadMessage($clientID);
+        	echo json_encode($clientMessages);
+        }
 		
 
 
