@@ -76,21 +76,28 @@ class PagesController extends AppController {
 	public function home(){
 		$this->layout='ajax';
 		if($this->Session->check('Auth.User')){
-            if($this->Auth->user('type')=='Business'){
-                $this->redirect(array('controller'=>'Businesses','action' => 'dashboard'));        
-            }
-            else if($this->Auth->user('type')=='Writer'){
-                $this->redirect(array('controller'=>'Writers','action' => 'dashboard'));
+            if($this->Auth->user('type')=='Client'){
+                $this->redirect(array('controller'=>'Clients','action' => 'dashboard'));        
             }
         }
         else{
-        	
+
         }
 	}
-	
-	
+	public function support($id) {
+		$this->layout='ajax';
+		$this->set('title_for_layout', 'Customer Support');
+		$number = $id;
+		$this->set([
+			'number' => $number
+		]);
+	}
+	public function chatview() {
+		$this->layout='ajax';
+		$this->set('title_for_layout', 'Customer Support');
+	}
 	public function beforeFilter(){
-			$this->set('title_for_layout','White Panda - The One Stop Shop for all your Content needs');
-            $this->Auth->allow('home');
+			$this->set('title_for_layout','SmartSupport');
+            $this->Auth->allow('home','support');
         }
 }

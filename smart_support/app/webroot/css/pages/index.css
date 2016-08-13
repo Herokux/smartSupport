@@ -1,0 +1,30 @@
+body {
+	background-image: url("http://localhost:8080/project/smart_support/smart_support/img/homepage/testimonial-bg.jpg");
+}
+.formbox {
+	width: 45%;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	margin-top: 100px;
+	padding-left: 30px;
+	padding-right: 50px;
+}
+.headpart {
+	text-align: center;
+	font-size: 30px;
+	padding-top: 20px;
+}
+.gap60 {
+	width: 100%;
+	height: 60px;
+}
+.btn {
+	width: 100%;
+	height: 40px;
+	padding-top: 2px;
+}
+.hidden {
+	display: none;
+}

@@ -1,0 +1,60 @@
+$(document).ready(function() {
+	var language = [
+    {display: "Spanish", value: "es" },
+    {display: "English", value: "en" },
+    {display: "Hindi", value: "hi" },
+    {display: "Arabic", value: "ar" },
+    {display: "Portuguese", value: "pt" },
+    {display: "Bengali", value: "bn" },
+    {display: "Russian", value: "ru" },
+    {display: "Japanese", value: "ja" },
+    {display: "Punjabi", value: "pa" },
+    {display: "German", value: "de" }];
+
+	$("#child_selection").html('<option value="" disabled selected>Choose your language</option>');	
+	$(language).each(function (i) 
+	{ 
+		$("#child_selection").append("<option value=\""+language[i].value+"\">"+language[i].display+"</option>");
+	});
+	function validate() {
+		var name = $('#name').val();
+		var email = $('#email').val();
+		var selectedlang = $('#child_selection').val();
+
+		if(name == "") {
+			alert('First name field is empty!', 2000);
+			return false;
+		}
+		if(!email.match(/[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/)) {
+			alert('Email is incorrect!', 2000);
+			return false;
+		}
+		return (true);
+	}
+
+	$('#submitdetails').click(function() {		
+		if(validate()) {
+			var id = Math.round(new Date().getTime()/1000);
+			var name = $('#name').val();
+			var email = $('#email').val();
+			var client_id = document.getElementById('client').innerHTML;
+			var selectedlang = $('#child_selection').val();
+			$.post("http://localhost:8080/project/smart_support/smart_support/Clients/coustmerdetails",{
+	           	'id': id,
+	           	'client_id': client_id,
+	           	'name': name,
+	           	'email': email,
+	           	'language': selectedlang
+	      	},
+        	function(data,status){
+        		if (status == 'success') {
+        			var url = 'http://localhost:8080/project/smart_support/smart_support/pages/chatview/'+id+'/'+client_id;	
+        			alert(url);
+        			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0');
+        		} else {
+        			alert('Something went please try again!');
+        		}
+			});
+		}
+	});
+});

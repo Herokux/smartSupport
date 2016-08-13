@@ -4,13 +4,12 @@
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 <body style="background:url(../img/homepage/testimonial-bg.jpg)">
 <br><br>
     <div class="contain">
         <div class="row" style="width: 60%; margin-left: 20%; background:#fff; padding: 2% 3%;">
-            <?php echo $this->Form->create('Client', array('controller'=>'Client','action'=>'signup', 'id'=> 'login', 'onsubmit'=>"return (validate())")); ?>
+            <?php echo $this->Form->create('Client', array('controller'=>'Client','action'=>'signup', 'id'=> 'login')); ?>
                 <div class="gap30"></div>
                 <h5 class="center form-type">Clients</h5>
                 <div class="gap20"></div>
@@ -71,7 +70,7 @@
                             'title'=> "You haven't agreed to the policy"
                     ));
                     ?>
-                    <label for="terms-agree">By registering, you agree to our .......
+                    <label for="terms-agree">By registering, you agree to our.
                     </label>
                 </div>
                 <div class="input-field col s12 m12 l12"></div>
@@ -83,12 +82,7 @@
             </form>
         </div>
     </div>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
 </body>

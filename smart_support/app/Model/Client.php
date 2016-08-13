@@ -37,7 +37,6 @@ class Client extends AppModel
 
 		$findMessageQuery = $this->ClientMessages->find('all', array(
 					'conditions'=> $conditions
-					// 'fields' => array('writer_id')
 			));
 
 
@@ -61,8 +60,6 @@ class Client extends AppModel
 					'conditions'=> $conditions
 					// 'fields' => array('writer_id')
 			));
-
-
 		$writerList = array();
 		foreach ($findWaitingArr as $temp) {
 			array_push($writerList, $temp["CustomerDetails"]);
@@ -72,16 +69,6 @@ class Client extends AppModel
 
 		return $postedData;
 	}
-
-
-
-
-
-
-
-
-
-
 	public function currentUserName($userID = null, $userType = null){
 	    	$typeArray = ["Business"];
 	    	if (($userID != null) && (in_array($userType, $typeArray))) {

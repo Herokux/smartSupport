@@ -29,46 +29,17 @@ Router::connect('/', array('controller' => 'pages', 'action' => 'home', 'home'))
 /*
  * ...and connect the rest of 'Pages' controller's URLs.
 */
-Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/pages/', array('controller' => 'pages', 'action' => 'home'));
 
-Router::connect('/faqs', array('controller' => 'faqs', 'action' => 'index'));
 
-Router::connect('/faqs/writer', array('controller' => 'faqs', 'action' => 'index'));
+Router::connect('/pages/support/:id', ['controller' => 'pages', 'action' => 'support'],
+    ['id' => '(\d|-)+', 'pass'=>['id']]
+);
 
 Router::connect('/faqs/writer/:id', ['controller' => 'faqs', 'action' => 'writer'],
     ['id' => '\d+', 'pass'=>['id']]
 );
 
-Router::connect('/faqs/client', array('controller' => 'faqs', 'action' => 'index'));
-
-Router::connect('/faqs/client/:id', ['controller' => 'faqs', 'action' => 'client'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
-
-Router::connect('/faqs/intern', array('controller' => 'faqs', 'action' => 'index'));
-
-Router::connect('/faqs/intern/:id', ['controller' => 'faqs', 'action' => 'intern'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
-
-Router::connect('/faqs/guest', array('controller' => 'faqs', 'action' => 'index'));
-
-Router::connect('/faqs/guest/:id', ['controller' => 'faqs', 'action' => 'guest'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
-
-Router::connect('/faqs/payment', array('controller' => 'faqs', 'action' => 'index'));
-
-Router::connect('/faqs/payment/:id', ['controller' => 'faqs', 'action' => 'payment'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
-
-
-Router::connect('/faqs/credits', array('controller' => 'faqs', 'action' => 'index'));
-
-Router::connect('/faqs/credits/:id', ['controller' => 'faqs', 'action' => 'credits'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
