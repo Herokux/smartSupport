@@ -90,6 +90,20 @@
             $this->layout='ajax';
             // $this->set('activeUser',$this->Session->read('Auth'));
         }
+
+
+        public function clientIncomingMessages(){
+        	$this->autoRender = false;
+        	$clientID = $this->Auth->user('id');
+        	$clientMessages = $this->Client->findUnreadMessage($clientID);
+        	echo json_encode($clientMessages);
+        }
+
+        public function findWaitingWriters() {
+        	$this->autoRender = false;
+        	$postedData = $this->Client->findWaitingWriters();
+        	echo json_encode($postedData);
+        }
 		
 
 

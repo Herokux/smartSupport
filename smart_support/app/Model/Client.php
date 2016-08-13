@@ -6,73 +6,81 @@ class Client extends AppModel
 	public $belongsTo=array(
 			'User'=>array(
 				'className'=>'User',
-				'foreignKey'=>'user_id',
+				'foreignKey'=>'id',
 				'dependent'=>true
 			),
 
-			'Business'=>array(
-				'className'=>'businesses',
-				'foreignKey'=>'user_id',
+
+			'ClientMessages'=>array(
+				'className'=>'ClientMessages',
+				'foreignKey'=>'client_id',
 				'dependent'=>true
 			),
 
-			'OrderDetails'=>array(
-				'className'=>'orderDetails',
-				'dependence'=>true
+			'CustomerDetails'=>array(
+				'className'=>'CustomerDetails',
+				'foreignKey'=>'id',
+				'dependent'=>true
 			),
-
-			'OrderStatus'=>array(
-				'className'=>'orderStatuses',
-				'dependence'=>true
-			),
-
-			'OrderReceived'=>array(
-				'className'=>'OrderReceives',
-				'dependence'=>true
-			),
-
-			'OrderRating'=>array(
-				'className'=>'OrderRatings',
-				'dependence'=>true
-			),
-
-			'WriterClaims'=>array(
-				'className'=>'WriterClaims',
-				'dependence'=>true
-			),
-
-			'OrderTransactions'=>array(
-				'className'=>'OrderTransactions',
-				'dependence'=>true
-			),
-
-
-			'WriterCredit'=>array(
-				'className'=>'WriterCredit',
-				'dependence'=>true
-			),
-
-			'ClientRevision'=>array(
-				'className'=>'orderRevisions',
-				'dependence'=>true
-			),
-
-			'ClientHelpmessages'=>array(
-				'className'=>'ClientHelpmessages',
-				'dependence'=>true
-			),
-
-			'OrderParameters'=>array(
-				'className'=>'OrderParameters',
-				'dependence'=>true
-			)
-
 			
 
 
 
 
 	);
+
+
+	public function findUnreadMessage($clientID) {
+		$conditions = array(
+				'ClientMessages.client_id' => $clientID
+			);
+
+		$findMessageQuery = $this->ClientMessages->find('all', array(
+					'conditions'=> $conditions
+					// 'fields' => array('writer_id')
+			));
+
+
+		$clientMessages = array();
+		foreach ($findMessageQuery as $temp) {
+			array_push($clientMessages, $temp["ClientMessages"]);
+		}
+
+		$postedData['Messages'] = $clientMessages;
+
+		return $postedData;
+	}
+
+
+	public function findWaitingWriters() {
+		$conditions = array(
+				'CustomerDetails.assigned' => 'none'
+			);
+
+		$findWaitingArr = $this->CustomerDetails->find('all', array(
+					'conditions'=> $conditions
+					// 'fields' => array('writer_id')
+			));
+
+
+		$writerList = array();
+		foreach ($findWaitingArr as $temp) {
+			array_push($writerList, $temp["CustomerDetails"]);
+		}
+
+		$postedData['CustomerDetails'] = $writerList;
+
+		return $postedData;
+	}
+
+
+
+
+
+
+
+
+
 
 	public function currentUserName($userID = null, $userType = null){
 	    	$typeArray = ["Business"];
