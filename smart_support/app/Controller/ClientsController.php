@@ -12,10 +12,10 @@
     	           $this->set('userName', $this->Client->currentUserName($userDetails['User']['id'], $userDetails['User']['type']));
             }
         }
-        public function customer_message() {
+        public function customer_message(client_id,customer_id) {
             $this->layout='ajax';
-            $message = $this->ClientMessage->allmessage();
-            die(json_encode($specilizations, JSON_PRETTY_PRINT));
+            $message = $this->ClientMessage->find('all');
+            die(json_encode($message, JSON_PRETTY_PRINT));
         }
         public function coustmerdetails() {
             if($this->request->is('post')){
