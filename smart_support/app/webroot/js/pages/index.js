@@ -1,12 +1,17 @@
-(function() {
-	var currentLocation =  document.URL;
+// (function() {
+// 	var currentLocation =  document.URL;
+// 	var res = currentLocation.split("://");
+// 	var resfinal  = res[1].split("/");
+// 	var client_id = resfinal[resfinal.length-1];
+// 	var customer_id = resfinal[resfinal.length-2];
+// })();
+var xmlhttp = new XMLHttpRequest(),
+    json;
+    var currentLocation =  document.URL;
 	var res = currentLocation.split("://");
 	var resfinal  = res[1].split("/");
 	var client_id = resfinal[resfinal.length-1];
 	var customer_id = resfinal[resfinal.length-2];
-})();
-var xmlhttp = new XMLHttpRequest(),
-    json;
     xmlhttp.onreadystatechange = function() {
         
         if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -33,6 +38,5 @@ var xmlhttp = new XMLHttpRequest(),
         }
     }
     var urlxml = 'http://localhost:8080/project/smart_support/smart_support/Clients/customer_message?client_id='+client_id+'&customer_id='+customer_id;
-    xmlhttp.open('GET', urlxml, true);
+    xmlhttp.open('GET', 'http://localhost:8080/project/smart_support/smart_support/Clients/customer_message', true);
     xmlhttp.send();
-Contact GitHub 
