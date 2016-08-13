@@ -77,6 +77,12 @@
         	$clientMessages = $this->Client->findUnreadMessage($clientID);
         	echo json_encode($clientMessages);
         }
+
+        public function findWaitingWriters() {
+        	$this->autoRender = false;
+        	$postedData = $this->Client->findWaitingWriters();
+        	echo json_encode($postedData);
+        }
 		
 
 

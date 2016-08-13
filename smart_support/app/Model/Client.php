@@ -15,8 +15,13 @@ class Client extends AppModel
 				'className'=>'ClientMessages',
 				'foreignKey'=>'client_id',
 				'dependent'=>true
-			)
-			
+			),
+
+			'CustomerDetails'=>array(
+				'className'=>'CustomerDetails',
+				'foreignKey'=>'id',
+				'dependent'=>true
+			),
 			
 
 
@@ -45,6 +50,37 @@ class Client extends AppModel
 
 		return $postedData;
 	}
+
+
+	public function findWaitingWriters() {
+		$conditions = array(
+				'CustomerDetails.assigned' => 'none'
+			);
+
+		$findWaitingArr = $this->CustomerDetails->find('all', array(
+					'conditions'=> $conditions
+					// 'fields' => array('writer_id')
+			));
+
+
+		$writerList = array();
+		foreach ($findWaitingArr as $temp) {
+			array_push($writerList, $temp["CustomerDetails"]);
+		}
+
+		$postedData['CustomerDetails'] = $writerList;
+
+		return $postedData;
+	}
+
+
+
+
+
+
+
+
+
 
 	public function currentUserName($userID = null, $userType = null){
 	    	$typeArray = ["Business"];

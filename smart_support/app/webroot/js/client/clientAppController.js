@@ -7,12 +7,9 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 	//Recent orders page call
 
 
-	var getMessagesRealtime = function() {
-		$http.get("../Clients/clientIncomingMessages").success(function (response) {
-
-
-				$scope.clientMessages = response.Messages;
-
+	var getCustomerWaiting = function() {
+		$http.get("../Clients/findWaitingWriters").success(function (response) {
+				$scope.CustomerDetails = response.CustomerDetails;
 
 				})
 			.catch(function (err) {
@@ -24,9 +21,65 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 			
 
 		});
-	}
+	};
 
-	getMessagesRealtime();
+
+	var xx = function () {
+		$http.get("../Clients/clientIncomingMessages").success(function (response) {
+				$scope.clientMessages = response.Messages;
+
+				})
+			.catch(function (err) {
+			
+				})
+
+			.finally(function () {
+				// Hide loading spinner whether our call
+
+		});
+	};
+
+
+	getCustomerWaiting();
+
+
+
+	$scope.startchat = function(customerID) {
+		window.currentCustomerID = customerID;
+			orderPostData += '&content_quality='+ selectedOrderType + '&ordertype_id=' + selectedOrderTypeID + '&attachment=' + myattachment + '&' + paramCheckbox($scope.checkbox);
+			// alert(orderPostData);
+
+			$http({
+					method: 'POST',
+					url: "../Businesses/saveOrderedContent",
+					data: orderPostData, // pass in data as strings
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					} // set the headers so angular passing info as form data (not request payload)
+				})
+				.success(function (response) {
+
+
+					toaster.pop('success', "Update Successful", "");
+					//success response part not working
+
+					//trigger form submit
+					angular.element('#pgExecuteButton').trigger('click');
+
+
+			});
+
+	};
+
+
+
+
+
+
+
+
+
+	// getMessagesRealtime();
 	$interval(function() {
 
 		// getMessagesRealtime();
