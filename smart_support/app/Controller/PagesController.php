@@ -74,7 +74,7 @@ class PagesController extends AppController {
 		}
 	}
 	public function home(){
-		$this->layout='home_layout_materialize';
+		$this->layout='ajax';
 		if($this->Session->check('Auth.User')){
             if($this->Auth->user('type')=='Business'){
                 $this->redirect(array('controller'=>'Businesses','action' => 'dashboard'));        
