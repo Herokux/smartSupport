@@ -2,21 +2,46 @@
     App::uses('CakeEmail', 'Network/Email');
     class ClientsController extends AppController{
 
-        public $uses=array('Client','User');
+    public $uses=array('Client','User','ClientMessage','CustomerDetail');
 
 
-        public function beforeFilter(){
-            $this->Auth->allow('login','signup', 'signupSuccess');
-            $this->set('isLoggedIn',$this->Auth->loggedIn());
-            $this->set('activeUser',$this->Session->read('Auth'));
-            $userDetails = $this->Session->read('Auth');
-            // echo $userDetails['User']['id'];
-            // echo json_encode($this->Session->read('Auth'));
-            $loginCheck = $this->Auth->loggedIn();
-            if ($loginCheck == "1") {
- 	           $this->set('userName', $this->Client->currentUserName($userDetails['User']['id'], $userDetails['User']['type']));
+    public function beforeFilter(){
+        $this->Auth->allow('login','signup', 'signupSuccess','customer_message','coustmerdetails');
+        $this->set('isLoggedIn',$this->Auth->loggedIn());
+        $this->set('activeUser',$this->Session->read('Auth'));
+        $userDetails = $this->Session->read('Auth');
+        // echo $userDetails['User']['id'];
+        // echo json_encode($this->Session->read('Auth'));
+        $loginCheck = $this->Auth->loggedIn();
+        if ($loginCheck == "1") {
+	           $this->set('userName', $this->Client->currentUserName($userDetails['User']['id'], $userDetails['User']['type']));
+        }
+    }
+
+
+    public function customer_message() {
+        $this->layout='ajax';
+        $message = $this->ClientMessage->allmessage();
+        die(json_encode($specilizations, JSON_PRETTY_PRINT));
+    }
+
+
+    public function coustmerdetails() {
+        if($this->request->is('post')){
+            $postedData =  $this->request->data;
+            if ($this->CustomerDetail->save($postedData)) {
+                die("success");
+            } else {
+                die("failure");
             }
         }
+    }
+
+
+
+
+
+
 
 
 
@@ -29,7 +54,7 @@
 
                 if($findUser != null){
                     $this->redirect(array('controller'=>'Users','action'=>'business_login', '?' => array(
-        'userExist' => '1')
+                        'userExist' => '1')
                     ));
                 }
 
@@ -48,10 +73,6 @@
                     $value['Client']['company']=$this->request->data['Client']['company'];
                     $this->Client->save($value);
                     
-
-
-        
-
                     $this->redirect(array('controller'=>'Clients','action'=>'signupSuccess'));
                     }
                 }
