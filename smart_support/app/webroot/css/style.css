@@ -1,0 +1,69 @@
+body {
+	overflow-x: hidden;
+}
+nav {
+	background-color: #217688;
+}
+.valign-wrapper {
+	width: 100% !important;
+	height: 500px !important;
+	background-image: url("../img/homepage/parallax1.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center !important;
+}   
+.parallax-container img {
+	width: 100%;
+	height: 100%;
+}
+.valign {
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 70px;
+	font-weight: 500;
+	background-color: rgba(0,0,0,0.2);
+}
+.section {
+	width: 80%;
+	height: 400px;
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+.section h2 {
+	text-align: center;
+}
+.section p {
+	padding-top: 30px;
+	font-size: 18px;
+	text-align: center;
+}
+.supportBox {
+	width: 100%;
+	height: 450px;
+	background-color: #218;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-image: url("../img/homepage/testimonial-bg.jpg");
+}
+.page-footer {
+	margin-top: -20px !important;
+}
+footer.page-footer  {
+	background-color: #217688;
+}
+.empty button {
+	height: 60px;
+}
+.empty {
+	position: absolute;
+	top: 50%;
+	left: calc(50% - 140px);
+	width: 280px;
+}
