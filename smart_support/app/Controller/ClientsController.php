@@ -57,7 +57,7 @@
                 }
  		}
 
- 		
+
  		public function signupSuccess(){
  			$this->layout='ajax';
  		}
@@ -66,7 +66,7 @@
         public function dashboard(){
 
         	
-            $this->layout='business_dashboard_layout';
+            $this->layout='ajax';
             // $this->set('activeUser',$this->Session->read('Auth'));
         }
 		
