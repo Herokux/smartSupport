@@ -8,64 +8,100 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 
 
 	var getCustomerWaiting = function() {
-		$http.get("../Clients/findWaitingWriters").success(function (response) {
-				$scope.CustomerDetails = response.CustomerDetails;
+		$interval(function() {
+			$http.get("../Clients/findWaitingWriters").success(function (response) {
+					$scope.CustomerDetails = response.CustomerDetails;
 
-				})
-			.catch(function (err) {
-			
-				})
+					})
+				.catch(function (err) {
+				
+					})
 
-			.finally(function () {
-				// Hide loading spinner whether our call
-			
+				.finally(function () {
+					// Hide loading spinner whether our call
+				
 
-		});
+			});
+		}, 1200);
 	};
 
 
-	var xx = function () {
-		$http.get("../Clients/clientIncomingMessages").success(function (response) {
-				$scope.clientMessages = response.Messages;
-
-				})
-			.catch(function (err) {
-			
-				})
-
-			.finally(function () {
-				// Hide loading spinner whether our call
-
-		});
-	};
+	
 
 
 	getCustomerWaiting();
 
 
 
-	$scope.startchat = function(customerID) {
-		window.currentCustomerID = customerID;
-			orderPostData += '&content_quality='+ selectedOrderType + '&ordertype_id=' + selectedOrderTypeID + '&attachment=' + myattachment + '&' + paramCheckbox($scope.checkbox);
-			// alert(orderPostData);
+
+
+
+	var chatRealtime = function (customerID, sessionID) {
+		$interval(function() {
+
+		
+			$http.get("../Clients/clientIncomingMessages/" + customerID + '/' + sessionID).success(function (response) {
+					$scope.clientMessages = response.Messages;
+
+					})
+				.catch(function (err) {
+				
+					})
+
+				.finally(function () {
+					// Hide loading spinner whether our call
+
+			});
+		}, 800);
+	};
+
+
+	var clientSendMessage = function(customerID, sessionID) {
+
+		$scope.clientSendMessageTrigger = function(currentMessage){
+			var myData = 'customer_token_id='+ customerID + '&clientside_token_id=' + sessionID + '&message=' + currentMessage + '&sender=client';
 
 			$http({
+					    method: 'POST',
+						url: "../Clients/clientSendMessage",
+						data: myData, // pass in data as strings
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded'
+						} // set the headers so angular passing info as form data (not request payload)
+					})
+					.success(function (response) {
+
+						$scope.currentMessage = '';
+			});
+		}
+	}
+
+
+
+
+	$scope.viewMessagebox = true;
+	$scope.startchat = function(sessionID, customerID) {
+		window.currentCustomerID = customerID;
+		window.sessionID = sessionID;
+		
+		var myData = 'customerID='+ customerID + '&sessionID=' + sessionID;
+
+		$http({
 					method: 'POST',
-					url: "../Businesses/saveOrderedContent",
-					data: orderPostData, // pass in data as strings
+					url: "../Clients/setClientCustomerLink",
+					data: myData, // pass in data as strings
 					headers: {
 						'Content-Type': 'application/x-www-form-urlencoded'
 					} // set the headers so angular passing info as form data (not request payload)
 				})
 				.success(function (response) {
 
-
 					toaster.pop('success', "Update Successful", "");
-					//success response part not working
+					$scope.viewMessagebox = false;
 
-					//trigger form submit
-					angular.element('#pgExecuteButton').trigger('click');
+					chatRealtime(customerID, sessionID);
 
+					clientSendMessage(customerID, sessionID);
 
 			});
 
@@ -79,11 +115,12 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 
 
 
-	// getMessagesRealtime();
-	$interval(function() {
 
-		// getMessagesRealtime();
-	}, 800);
+
+
+
+	// getMessagesRealtime();
+	
 
 	
 

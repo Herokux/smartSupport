@@ -1,5 +1,7 @@
 body {
-	background-image: url('http://localhost:8080/project/smart_support/smart_support/img/homepage/testimonial-bg.jpg');
+	background-image: url('../../img/homepage/testimonial-bg.jpg');
+	background-position: center;
+	background-size: cover;
 }
 .card {
 	width: 50%;

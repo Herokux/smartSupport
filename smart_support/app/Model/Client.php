@@ -30,9 +30,10 @@ class Client extends AppModel
 	);
 
 
-	public function findUnreadMessage($clientID) {
+	public function findUnreadMessageClient($customerID, $sessionID) {
 		$conditions = array(
-				'ClientMessages.client_id' => $clientID
+				'ClientMessages.customer_token_id' => $customerID,
+				'ClientMessages.clientside_token_id' => $sessionID
 			);
 
 		$findMessageQuery = $this->ClientMessages->find('all', array(
@@ -69,6 +70,50 @@ class Client extends AppModel
 
 		return $postedData;
 	}
+
+
+
+
+
+
+	public function setClientCustomerLink($mydata) {
+		$conditions = array(
+				'CustomerDetails.id' => $mydata['customerID'],
+				'CustomerDetails.assigned' => 'none'
+			);
+
+
+		if ($this->CustomerDetails->hasAny($conditions)) {
+			$currentClientTokenID = $mydata['sessionID'];
+			$conditionUpdate = array(
+				'CustomerDetails.id' => $mydata['customerID']
+			);
+			
+	
+			$this->CustomerDetails->updateAll(
+				array( 'CustomerDetails.assigned' => "'$currentClientTokenID'"),   //fields to update
+				$conditionUpdate  //condition
+			);
+
+
+			echo 'success';
+		}
+		else {
+			echo 'failure';
+		}
+	}
+
+
+
+
+	public function clientSendMessage($mydata) {
+		
+	}
+
+
+
+
+
 	public function currentUserName($userID = null, $userType = null){
 	    	$typeArray = ["Business"];
 	    	if (($userID != null) && (in_array($userType, $typeArray))) {

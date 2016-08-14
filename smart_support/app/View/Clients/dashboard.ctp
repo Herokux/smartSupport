@@ -51,9 +51,7 @@
         </nav>
 
 
-
-
-      
+        <div ng-init="sessionID = '<?php echo $sessionID; ?>'"></div>
         <div class="pageLoading">
 
             <div ng-show="loading" id="loading">
@@ -107,8 +105,8 @@
             <div class="col s5">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text" style="height: 400px; overflow-y: scroll;">
-                        <ul>
-                            <li>sss</li>
+                        <ul ng-hide = "viewMessagebox">
+                            <li ng-repeat="z in clientMessages">{{z.message}}</li>
                         </ul>
 
                     </div>
@@ -116,16 +114,18 @@
 
                    
                 </div>
-                <div class="input-field row">
-                    <input id="icon_telephone" type="tel" class="validate" placeholder="Type">
-                </div>
+                <form ng-submit="clientSendMessageTrigger(currentMessage)">
+                    <div class="input-field row">
+                        <input ng-model="currentMessage" type="tel" class="validate" placeholder="Type">
+                    </div>
+                </form>
             </div>
 
             <div class="col s3">
                 
                 <ul class="collection with-header">
                     <li class="collection-header"><h4>Waiting list</h4></li>
-                    <li class="collection-item" ng-repeat="y in CustomerDetails"><div>{{y.name}}<a href="#!" class="secondary-content" ng-click="startchat(customerID)"><i class="material-icons">send</i></a></div></li>
+                    <li class="collection-item" ng-repeat="y in CustomerDetails"><div>{{y.name}}<a href="#!" class="secondary-content" ng-click="startchat(sessionID, y.id)"><i class="material-icons">send</i></a></div></li>
                     
                 </ul>
                     

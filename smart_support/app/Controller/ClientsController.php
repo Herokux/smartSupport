@@ -72,17 +72,45 @@
  		}
         public function dashboard(){
             $this->layout='ajax';
+            $sessionID = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+            $this->set('sessionID', $sessionID);
+
         }
-        public function clientIncomingMessages(){
+        public function clientIncomingMessages($customerID, $sessionID){
         	$this->autoRender = false;
-        	$clientID = $this->Auth->user('id');
-        	$clientMessages = $this->Client->findUnreadMessage($clientID);
+        	$clientMessages = $this->Client->findUnreadMessageClient($customerID, $sessionID);
         	echo json_encode($clientMessages);
         }
+
+
+        public function clientSendMessage() {
+        	$this->autoRender = false;
+        	if($this->request->is('post')){
+
+        		$mydata = $this->request->data;
+        		$this->Client->clientSendMessage($mydata);
+     			
+        	}
+        }
+
+
         public function findWaitingWriters() {
         	$this->autoRender = false;
         	$postedData = $this->Client->findWaitingWriters();
         	echo json_encode($postedData);
+        }
+
+
+        public function setClientCustomerLink() {
+        	$this->autoRender = false;
+        	if($this->request->is('post')){
+
+        		$mydata = $this->request->data;
+        		$mydata['client_id'] = $this->Auth->user('id');
+        		$this->Client->setClientCustomerLink($mydata);
+     			
+        	}
+        	
         }
     }
 ?>

@@ -8,8 +8,8 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col s12 s6 offset-s3">
-			<div class="card blue-grey darken-1">
+		<div class="col s12">
+			<div class="card blue-grey darken-1 row" style="margin-left: auto;  margin-right: auto;">
 				<div class="card-content white-text">
 					<span class="card-title">Congratulations</span>
 					<p>
