@@ -10,23 +10,7 @@
 	<div class="formbox">
 
 		<div class="headpart">Contact customer support</div>
-			<div class="row center-align" style="padding-top: 96px; display:none;">
-				<div id='myloader' class="preloader-wrapper active">
-				    <div class="spinner-layer spinner-red-only">
-				      <div class="circle-clipper left">
-				        <div class="circle"></div>
-				      </div><div class="gap-patch">
-				        <div class="circle"></div>
-				      </div><div class="circle-clipper right">
-				        <div class="circle"></div>
-				      </div>
-				    </div>
-				</div>
-
-				<div id="connected" style="display: none;">
-					<i class="large material-icons">email</i>
-				</div>
-			</div>
+			
 
 	        <form action="" id="createCustomerContactForm">
 				<div class="input-field col s12">
@@ -43,6 +27,24 @@
 				<div class="gap60"></div>
 				<a id="submitdetails" class="waves-effect waves-light btn">Request support</a>
 	        </form>
+
+	        <div class="row center-align" style="padding-top: 96px; width: 55px;">
+				<div id='myloader' class="preloader-wrapper active" style="display:none;">
+				    <div class="spinner-layer spinner-red-only">
+				      <div class="circle-clipper left">
+				        <div class="circle"></div>
+				      </div><div class="gap-patch">
+				        <div class="circle"></div>
+				      </div><div class="circle-clipper right">
+				        <div class="circle"></div>
+				      </div>
+				    </div>
+				</div>
+
+				<div id="connected" style="display: none;">
+					<i class="large material-icons">email</i>
+				</div>
+			</div>
 
       </div>
 	</div>
