@@ -29,14 +29,12 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
-
 /**
  * This controller does not use a model
  *
  * @var array
  */
-	public $uses = array();
-
+	public $uses=array('Client','User','ClientMessage','CustomerDetail');
 /**
  * Displays a view
  *
@@ -94,7 +92,6 @@ class PagesController extends AppController {
 	}
 	public function chatview() {
 		$this->layout='ajax';
-		$this->set('title_for_layout', 'Customer Support');
 	}
 	public function beforeFilter(){
 			$this->set('title_for_layout','SmartSupport');
