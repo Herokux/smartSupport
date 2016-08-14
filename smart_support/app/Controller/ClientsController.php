@@ -3,7 +3,7 @@
     class ClientsController extends AppController{
         public $uses=array('Client','User','ClientMessage','CustomerDetail');
         public function beforeFilter(){
-            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','coustmerdetails');
+            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','coustmerdetails','customerstatus');
             $this->set('isLoggedIn',$this->Auth->loggedIn());
             $this->set('activeUser',$this->Session->read('Auth'));
             $userDetails = $this->Session->read('Auth');
@@ -23,6 +23,44 @@
                 }
             }
         }
+
+        public function customerstatus($customer_id) {
+            $this->layout='ajax';
+            $conditions = array(
+                    'CustomerDetail.id' => $customer_id
+                );
+            $status = $this->CustomerDetail->find('all', array(
+                        'conditions' => $conditions
+                    )
+                );
+            die(json_encode($status, JSON_PRETTY_PRINT));
+        }
+
+        public function insertmessage() {
+            if($this->request->is('post')){
+                $postedData =  $this->request->data;
+                if ($this->ClientMessage->save($postedData)) {
+                    die("success");
+                } else {
+                    die("failure");
+                }
+            }
+
+        }
+
+        public function customer_message($client_id, $customer_id) {
+            $this->layout='ajax';
+            $conditions = array(
+                    'ClientMessage.customer_token_id' => $client_id
+                );
+            $message = $this->ClientMessage->find('all', array(
+                        'conditions' => $conditions
+                    )
+                );
+            die(json_encode($message, JSON_PRETTY_PRINT));
+        }
+
+        
     	public function signup(){
 			$this->layout='ajax';
             if($this->request->is('post')){

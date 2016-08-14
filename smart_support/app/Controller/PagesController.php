@@ -90,20 +90,9 @@ class PagesController extends AppController {
 			'number' => $number
 		]);
 	}
-	public function chatview($client_id, $customer_id) {
+	public function chatview() {
 		$this->layout='ajax';
-		$this->layout='ajax';
-        $conditions = array(
-        		'ClientMessage.customer_token_id' => $client_id
-        	);
-        $message = $this->ClientMessage->find('all', array(
-        			'conditions' => $conditions
-        		)
-        	);
-        die(json_encode($message, JSON_PRETTY_PRINT));
 	}
-
-
 	public function beforeFilter(){
 			$this->set('title_for_layout','SmartSupport');
             $this->Auth->allow('home','support','chatview');
