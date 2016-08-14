@@ -78,7 +78,7 @@
                     <div class="card-content white-text" style="height: 400px; overflow-y: scroll;">
                         <ul ng-hide = "viewMessagebox">
                             <div class="chatinit">New Chat Initialised</div>
-                            <div class="chatmessage" ng-repeat="z in clientMessages">{{z.message}} <br> </div>
+                            <div class="chatmessage" ng-class="{'right': z.sender == 'client'}"  ng-repeat="z in clientMessages">{{z.message}} <br> </div>
                         </ul>
                     </div>
                 </div>

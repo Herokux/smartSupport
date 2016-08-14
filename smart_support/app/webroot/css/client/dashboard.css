@@ -64,3 +64,7 @@ body > div.main-body > div.row > div.col.s5 > form > div > input {
     font-weight: bold;
     text-align: center;
 }
+
+.chatmessage{
+	margin-bottom: 5px !important;
+}
