@@ -36,24 +36,7 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 
 
 
-	var chatRealtime = function (customerID, sessionID) {
-		$interval(function() {
-
-		
-			$http.get("../Clients/clientIncomingMessages/" + customerID + '/' + sessionID).success(function (response) {
-					$scope.clientMessages = response.Messages;
-
-					})
-				.catch(function (err) {
-				
-					})
-
-				.finally(function () {
-					// Hide loading spinner whether our call
-
-			});
-		}, 800);
-	};
+	
 
 
 	var clientSendMessage = function(customerID, sessionID) {
@@ -83,7 +66,7 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 	$scope.startchat = function(sessionID, customerID) {
 		window.currentCustomerID = customerID;
 		window.sessionID = sessionID;
-		
+		$scope.clientMessages = "";
 		var myData = 'customerID='+ customerID + '&sessionID=' + sessionID;
 
 		$http({
@@ -99,14 +82,38 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 					toaster.pop('success', "Update Successful", "");
 					$scope.viewMessagebox = false;
 
-					chatRealtime(customerID, sessionID);
+					$scope.chatRealtime();
 
-					clientSendMessage(customerID, sessionID);
+					clientSendMessage(currentCustomerID, sessionID);
 
 			});
 
 	};
 
+
+
+
+	$scope.chatRealtime = function() {
+
+		$interval.cancel(myinterval);
+		var myinterval = $interval(function() {
+
+		
+				$http.get("../Clients/clientIncomingMessages/" + currentCustomerID + '/' + sessionID).success(function (response) {
+						$scope.clientMessages = response.Messages;
+						})
+					.catch(function (err) {
+					
+						})
+
+					.finally(function () {
+						// Hide loading spinner whether our call
+				});
+		}, 800);
+	}
+
+
+	
 
 
 

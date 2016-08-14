@@ -28,23 +28,7 @@ class Customer extends AppModel
 	);
 
 
-	public function findClientSession($id, $client_id) {
-		$conditions = array(
-				'CustomerDetails.id' => $id,
-				'CustomerDetails.client_id' => $client_id
-			);
-
-		$findSesionQuery = $this->CustomerDetails->find('first', array(
-					'conditions'=> $conditions
-		));
-
-		echo json_encode($findSesionQuery);
-
-		return $findSesionQuery['CustomerDetails'];
-
-
-	}
-
+	
 
 
 
@@ -67,6 +51,21 @@ class Customer extends AppModel
 		$postedData['Messages'] = $clientMessages;
 
 		return $postedData;
+	}
+
+	public function findClientSession($id, $client_id) {
+		$conditions = array(
+				'CustomerDetails.id' => $id,
+				'CustomerDetails.client_id' => $client_id
+			);
+
+		$findSesionQuery = $this->CustomerDetails->find('first', array(
+					'conditions'=> $conditions
+		));
+
+		return $findSesionQuery['CustomerDetails'];
+
+
 	}
 
 
