@@ -77,11 +77,9 @@
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text" style="height: 400px; overflow-y: scroll;">
                         <ul ng-hide = "viewMessagebox">
-                            <div class="chatinit">Chat Initialised</div>
-                            <span class="chatmessage">i am dummy</span>
-                            <span class="chatmessage" ng-repeat="z in clientMessages">{{z.message}}</span>
+                            <div class="chatinit">New Chat Initialised</div>
+                            <div class="chatmessage" ng-repeat="z in clientMessages">{{z.message}} <br> </div>
                         </ul>
-
                     </div>
                 </div>
                 <form ng-submit="clientSendMessageTrigger(currentMessage)">

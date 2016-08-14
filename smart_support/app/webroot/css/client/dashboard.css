@@ -41,14 +41,21 @@ body > div.main-body > div.row > div.col.s5 > form > div > input {
 }
 .chatmessage {
 	background-color: #224352;
-    max-width: calc(50% - 10px);
+    width: 100%;
     padding: 5px;
     padding-left: 10px;
     border-radius: 5px;
+    margin-bottom: 5px;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
 }
 .chatinit {
 	background-color: #ffb300;
-    max-width: 135px;
+    max-width: 175px;
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 20px;
