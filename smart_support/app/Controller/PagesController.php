@@ -98,6 +98,6 @@ class PagesController extends AppController {
 	}
 	public function beforeFilter(){
 			$this->set('title_for_layout','SmartSupport');
-            $this->Auth->allow('home','support');
+            $this->Auth->allow('home','support','chatview');
         }
 }
