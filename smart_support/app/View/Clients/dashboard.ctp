@@ -15,11 +15,11 @@
         <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
         <nav>
             <div class="nav-wrapper containx">
-                <a href="#" class="brand-logo">Hack</a>
+                <a href="#" class="brand-logo">Dashboard</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">View API Key</a></li>
                     <li>
-                        <a class='dropdown-button' href='#' data-activates='dropdown1'><?php echo $userName; ?><i class="material-icons left">cloud</i></a>
+                        <a class='dropdown-button' href='#' data-activates='dropdown1'><?php echo $activeUser['User']['username']; ?><i class="material-icons right">input</i></a>
                         <ul id='dropdown1' class='dropdown-content'>
                             <li><?php echo $this->Html->link("Logout",array('controller'=>'Users','action'=>'logout'),array('escape' => false)); ?></li>
                         </ul>
@@ -66,55 +66,29 @@
         </div>
 
         <div class="row">
-            <div class="col s4">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text" style="height: 540px; overflow-y: scroll;">
-                        <table>
-                            <thead>
-                              <tr>
-                                  <th data-field="id">Name</th>
-                                  <th data-field="name">Email</th>
-                                  <th data-field="price">Chat Time</th>
-                              </tr>
-                            </thead>
+            <div class="col s3 offset-s1">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h4>Waiting list</h4></li>
 
-                            <tbody>
-                              <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                              </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                   
-                </div>
+                    <li class="collection-item" ng-repeat="y in CustomerDetails"><div>{{y.name}}<a href="#!" class="secondary-content" ng-click="startchat(sessionID, y.id)"><i class="material-icons">send</i></a></div></li>
+                </ul>
             </div>
-            <div class="col s5">
+            <div class="col s7">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text" style="height: 400px; overflow-y: scroll;">
                         <ul ng-hide = "viewMessagebox">
-                            <li ng-repeat="z in clientMessages">{{z.message}}</li>
+                            <div class="chatinit">Chat Initialised</div>
+                            <span class="chatmessage">i am dummy</span>
+                            <span class="chatmessage" ng-repeat="z in clientMessages">{{z.message}}</span>
                         </ul>
 
                     </div>
                 </div>
                 <form ng-submit="clientSendMessageTrigger(currentMessage)">
                     <div class="input-field row">
-                        <input ng-model="currentMessage" type="tel" class="validate" placeholder="Type">
+                        <input ng-model="currentMessage" type="tel" class="validate" placeholder="Enter Your Message">
                     </div>
                 </form>
-            </div>
-
-            <div class="col s3">
-                <ul class="collection with-header">
-                    <li class="collection-header"><h4>Waiting list</h4></li>
-
-                    <li class="collection-item" ng-repeat="y in CustomerDetails"><div>{{y.name}}<a href="#!" class="secondary-content" ng-click="startchat(sessionID, y.id)"><i class="material-icons">send</i></a></div></li>
-                    
-
-                </ul>
             </div>
         </div>
     </div>
