@@ -4,7 +4,7 @@
 	<title>Coustmer Template</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-	<link rel="stylesheet" href="/project/smart_support/smart_support/css/pages/index.css">
+	<?php echo $this->Html->css('pages/index'); ?>
 </head>
 <body>
 	<div class="formbox">
@@ -27,6 +27,6 @@
       </div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="/project/smart_support/smart_support/js/pages/script.js" type="text/javascript"></script>
+	<?php echo $this->Html->script('pages/script.js'); ?>
 </body>
 </html>

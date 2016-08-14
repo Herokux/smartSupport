@@ -39,7 +39,7 @@ $(document).ready(function() {
 			var email = $('#email').val();
 			var client_id = document.getElementById('client').innerHTML;
 			var selectedlang = $('#child_selection').val();
-			$.post("http://localhost:8080/project/smart_support/smart_support/Clients/coustmerdetails",{
+			$.post("../../Clients/coustmerdetails",{
 	           	'id': id,
 	           	'client_id': client_id,
 	           	'name': name,
@@ -48,7 +48,7 @@ $(document).ready(function() {
 	      	},
         	function(data,status){
         		if (status == 'success') {
-        			var url = 'http://localhost:8080/project/smart_support/smart_support/pages/chatview/'+id+'/'+client_id;	
+        			var url = '../../pages/chatview/'+id+'/'+client_id;	
         			alert(url);
         			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0');
         		} else {
