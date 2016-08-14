@@ -127,7 +127,8 @@
 
         public function findWaitingWriters() {
         	$this->autoRender = false;
-        	$postedData = $this->Client->findWaitingWriters();
+            $ClientID = $this->Auth->user('id');
+        	$postedData = $this->Client->findWaitingWriters($ClientID);
         	echo json_encode($postedData);
         }
 

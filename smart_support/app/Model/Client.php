@@ -56,9 +56,10 @@ class Client extends AppModel
 	}
 
 
-	public function findWaitingWriters() {
+	public function findWaitingWriters($ClientID) {
 		$conditions = array(
-				'CustomerDetails.assigned' => 'none'
+				'CustomerDetails.assigned' => 'none',
+				'CustomerDetails.client_id'=> $ClientID
 			);
 
 		$findWaitingArr = $this->CustomerDetails->find('all', array(
