@@ -3,7 +3,7 @@
     class ClientsController extends AppController{
         public $uses=array('Client','User','ClientMessage','CustomerDetail');
         public function beforeFilter(){
-            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','customerdetails','customerstatus', 'checkforClientApproval');
+            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','customerdetails','customerstatus', 'checkforClientApproval', 'customerLang');
             $this->set('isLoggedIn',$this->Auth->loggedIn());
             $this->set('activeUser',$this->Session->read('Auth'));
             $userDetails = $this->Session->read('Auth');
@@ -66,7 +66,7 @@
             if($this->request->is('post')){
                 $findUser = $this->User->findByUsername($this->data['Client']['username']);
                 if($findUser != null){
-                    $this->redirect(array('controller'=>'Users','action'=>'business_login', '?' => array(
+                    $this->redirect(array('controller'=>'Users','action'=>'client_login', '?' => array(
                         'userExist' => '1')
                     ));
                 }
@@ -89,9 +89,7 @@
  		}
  		public function signupSuccess(){
  			$this->layout='ajax';
-            $this->set([
-            'id' => $this->Auth->user('id')
-            ]);
+
  		}
         public function dashboard(){
             $this->layout='ajax';
@@ -114,6 +112,16 @@
         		$this->Client->clientSendMessage($mydata);
      			
         	}
+        }
+
+        public function clientSendMessageCustomerSave() {
+            $this->autoRender = false;
+            if($this->request->is('post')){
+
+                $mydata = $this->request->data;
+                $this->Client->clientSendMessageCustomerSave($mydata);
+                
+            }
         }
 
 
@@ -139,6 +147,11 @@
         public function checkforClientApproval($userTokenID) {
             $this->autoRender = false;
             $this->Client->checkforClientApproval($userTokenID);
+        }
+
+        public function customerLang($userID) {
+            $this->autoRender = false;
+            $this->Client->getCustomerLang($userID);
         }
     }
 ?>

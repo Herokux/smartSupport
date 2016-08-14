@@ -5,7 +5,7 @@
         // public $uses=array('PricingPlan');
 
 		public function beforeFilter(){
-            $this->Auth->allow('chatview', 'customerIncomingMessages', 'customerSendMessage');
+            $this->Auth->allow('chatview', 'customerIncomingMessages', 'customerSendMessage', 'customerLang', 'customerSendMessageClientSave');
         }
 
 
@@ -33,6 +33,23 @@
         		$this->Customer->customerSendMessage($mydata);
      			
         	}
+        }
+
+        public function customerSendMessageClientSave() {
+            $this->autoRender = false;
+            if($this->request->is('post')){
+
+                $mydata = $this->request->data;
+                $this->Customer->customerSendMessageClientSave($mydata);
+                
+            }
+        }
+
+
+
+        public function customerLang($userID) {
+            $this->autoRender = false;
+            $this->Customer->getCustomerLang($userID);
         }
 
 

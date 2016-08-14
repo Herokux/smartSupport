@@ -66,6 +66,46 @@ app.controller('customerController', function ($scope, $http, $sce, $timeout, $i
 
 						$scope.currentMessage = '';
 			});
+
+
+
+
+
+
+
+			//Save customer message
+
+			$http.get("https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160703T222603Z.a2b44ab180b3363e.a23fc5a7aea820b6217fe2efc12029a1b3c2823e&text=" + currentMessage + "&lang=en").success(function (response) {
+					window.postMessage = response.text;
+
+					})
+				.catch(function (err) {
+					})
+				.finally(function () {
+
+
+					var myData = 'customer_token_id='+ customerID + '&clientside_token_id=' + sessionID + '&message=' + postMessage + '&sender=customer';
+
+					$http({
+							    method: 'POST',
+								url: "http://localhost:8080/smart_support/smart_support/Customers/customerSendMessageClientSave",
+								data: myData, // pass in data as strings
+								headers: {
+									'Content-Type': 'application/x-www-form-urlencoded'
+								} // set the headers so angular passing info as form data (not request payload)
+							})
+							.success(function (response) {
+
+								$scope.currentMessage = '';
+					});	
+
+			});	
+
+
+
+
+
+
 		}
 	}
 

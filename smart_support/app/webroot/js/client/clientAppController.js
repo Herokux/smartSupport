@@ -42,6 +42,9 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 	var clientSendMessage = function(customerID, sessionID) {
 
 		$scope.clientSendMessageTrigger = function(currentMessage){
+
+
+			//Save client message
 			var myData = 'customer_token_id='+ customerID + '&clientside_token_id=' + sessionID + '&message=' + currentMessage + '&sender=client';
 
 			$http({
@@ -56,6 +59,64 @@ app.controller('clientController', function ($scope, $http, $sce, $timeout, $int
 
 						$scope.currentMessage = '';
 			});
+
+
+
+
+
+
+			//Save customer message
+			$http.get("../Clients/customerLang/" + customerID).success(function (response) {
+					window.customerLang = response;
+
+
+					})
+				.catch(function (err) {
+					})
+				.finally(function () {
+
+					$http.get("https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160703T222603Z.a2b44ab180b3363e.a23fc5a7aea820b6217fe2efc12029a1b3c2823e&text=" + currentMessage + "&lang=" + customerLang).success(function (response) {
+							window.postMessage = response.text;
+
+							})
+						.catch(function (err) {
+							})
+						.finally(function () {
+
+
+							var myData = 'customer_token_id='+ customerID + '&clientside_token_id=' + sessionID + '&message=' + postMessage + '&sender=client';
+
+							$http({
+									    method: 'POST',
+										url: "../Clients/clientSendMessageCustomerSave",
+										data: myData, // pass in data as strings
+										headers: {
+											'Content-Type': 'application/x-www-form-urlencoded'
+										} // set the headers so angular passing info as form data (not request payload)
+									})
+									.success(function (response) {
+
+										$scope.currentMessage = '';
+							});
+
+					});	
+
+			});
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+			
 		}
 	}
 

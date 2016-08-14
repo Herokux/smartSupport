@@ -19,7 +19,14 @@ class Customer extends AppModel
 				'className'=>'CustomerDetails',
 				'foreignKey'=>'id',
 				'dependent'=>true
+			),
+
+			'CustomerMessages'=>array(
+				'className'=>'CustomerMessages',
+				'foreignKey'=>'client_id',
+				'dependent'=>true
 			)
+			
 			
 
 
@@ -34,21 +41,21 @@ class Customer extends AppModel
 
 	public function findUnreadMessageClient($customerID, $sessionID) {
 		$conditions = array(
-				'ClientMessages.customer_token_id' => $customerID,
-				'ClientMessages.clientside_token_id' => $sessionID
+				'CustomerMessages.customer_token_id' => $customerID,
+				'CustomerMessages.clientside_token_id' => $sessionID
 			);
 
-		$findMessageQuery = $this->ClientMessages->find('all', array(
+		$findMessageQuery = $this->CustomerMessages->find('all', array(
 					'conditions'=> $conditions
 			));
 
 
-		$clientMessages = array();
+		$CustomerMessages = array();
 		foreach ($findMessageQuery as $temp) {
-			array_push($clientMessages, $temp["ClientMessages"]);
+			array_push($CustomerMessages, $temp["CustomerMessages"]);
 		}
 
-		$postedData['Messages'] = $clientMessages;
+		$postedData['Messages'] = $CustomerMessages;
 
 		return $postedData;
 	}
@@ -70,9 +77,26 @@ class Customer extends AppModel
 
 
 	public function customerSendMessage($mydata) {
+		$this->CustomerMessages->save($mydata);
+	}
+
+	public function customerSendMessageClientSave($mydata) {
 		$this->ClientMessages->save($mydata);
 	}
 
+
+
+	public function getCustomerLang($userID) {
+		$conditions = array(
+				'CustomerDetails.id' => $userID
+			);
+
+		$findSesionQuery = $this->CustomerDetails->find('first', array(
+					'conditions'=> $conditions
+		));
+
+		echo $findSesionQuery['CustomerDetails']['language'];
+	}
 
 
 

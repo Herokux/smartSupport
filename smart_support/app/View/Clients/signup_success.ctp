@@ -13,11 +13,10 @@
 				<div class="card-content white-text">
 					<span class="card-title">Congratulations</span>
 					<p>
-						You have successfully claimed you API key : <a href="">http://localhost/project/smart_support/smart_support/pages/support/<?php
-						echo $activeUser['User']['id']; ?></a></p>
+						Your account has been successfully created. Login to your account to access you API. </p>
 				</div>
 				<div class="card-action">
-					<a href="./dashboard">DashBoard</a>
+					<a href="../Users/client_login">Login now</a>
 				</div>
 			</div>
 		</div>

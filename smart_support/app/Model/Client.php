@@ -20,6 +20,12 @@ class Client extends AppModel
 				'foreignKey'=>'id',
 				'dependent'=>true
 			),
+
+			'CustomerMessages'=>array(
+				'className'=>'CustomerMessages',
+				'foreignKey'=>'client_id',
+				'dependent'=>true
+			)
 			
 
 
@@ -108,6 +114,10 @@ class Client extends AppModel
 		$this->ClientMessages->save($mydata);
 	}
 
+	public function clientSendMessageCustomerSave($mydata) {
+		$this->CustomerMessages->save($mydata);
+	}
+
 
 
 
@@ -151,6 +161,23 @@ class Client extends AppModel
 		else {
 			echo 'assigned';
 		}
+	}
+
+
+
+
+
+
+	public function getCustomerLang($userID) {
+		$conditions = array(
+				'CustomerDetails.id' => $userID
+			);
+
+		$findSesionQuery = $this->CustomerDetails->find('first', array(
+					'conditions'=> $conditions
+		));
+
+		echo $findSesionQuery['CustomerDetails']['language'];
 	}
 
 	
