@@ -39,11 +39,9 @@
         </div>
             
 
-<<<<<<< HEAD
 
         <div ng-init="sessionID = '<?php echo $sessionID; ?>'"></div>
-=======
->>>>>>> 40bbbca392efca3864cac988e640dca7823b3724
+
         <div class="pageLoading">
             <div ng-show="loading" id="loading">
                 <div class="preloader-wrapper big active">
