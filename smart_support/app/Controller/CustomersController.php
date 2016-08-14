@@ -5,7 +5,7 @@
         // public $uses=array('PricingPlan');
 
 		public function beforeFilter(){
-            $this->Auth->allow('chatview', 'customerIncomingMessages');
+            $this->Auth->allow('chatview', 'customerIncomingMessages', 'customerSendMessage');
         }
 
 

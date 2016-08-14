@@ -3,7 +3,7 @@
     class ClientsController extends AppController{
         public $uses=array('Client','User','ClientMessage','CustomerDetail');
         public function beforeFilter(){
-            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','coustmerdetails','customerstatus');
+            $this->Auth->allow('login','signup', 'signupSuccess','customer_message','customerdetails','customerstatus', 'checkforClientApproval');
             $this->set('isLoggedIn',$this->Auth->loggedIn());
             $this->set('activeUser',$this->Session->read('Auth'));
             $userDetails = $this->Session->read('Auth');
@@ -13,7 +13,7 @@
             }
         }
         
-        public function coustmerdetails() {
+        public function customerdetails() {
             if($this->request->is('post')){
                 $postedData =  $this->request->data;
                 if ($this->CustomerDetail->save($postedData)) {
@@ -134,6 +134,11 @@
      			
         	}
         	
+        }
+
+        public function checkforClientApproval($userTokenID) {
+            $this->autoRender = false;
+            $this->Client->checkforClientApproval($userTokenID);
         }
     }
 ?>

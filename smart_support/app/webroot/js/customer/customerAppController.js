@@ -20,8 +20,11 @@ app.controller('customerController', function ($scope, $http, $sce, $timeout, $i
 	var chatRealtime = function (customerID, clientSession) {
 		$interval(function() {
 
+			console.log(customerID);
+
+			console.log(clientSession);
 		
-			$http.get("../Customers/customerIncomingMessages/" + customerID + '/' + clientSession).success(function (response) {
+			$http.get("http://localhost:8080/smart_support/smart_support/Customers/customerIncomingMessages/" + customerID + '/' + clientSession).success(function (response) {
 					$scope.clientMessages = response.Messages;
 
 					})
@@ -35,7 +38,7 @@ app.controller('customerController', function ($scope, $http, $sce, $timeout, $i
 			});
 		}, 800);
 
-		clientSendMessage(customerID, clientSession)
+		clientSendMessage(customerID, clientSession);
 	};
 
 
@@ -48,12 +51,12 @@ app.controller('customerController', function ($scope, $http, $sce, $timeout, $i
 	var clientSendMessage = function(customerID, sessionID) {
 
 		$scope.clientSendMessageTrigger = function(currentMessage){
-			// console.log('aa');
+			
 			var myData = 'customer_token_id='+ customerID + '&clientside_token_id=' + sessionID + '&message=' + currentMessage + '&sender=customer';
 
 			$http({
 					    method: 'POST',
-						url: "../Customers/customerSendMessage",
+						url: "http://localhost:8080/smart_support/smart_support/Customers/customerSendMessage",
 						data: myData, // pass in data as strings
 						headers: {
 							'Content-Type': 'application/x-www-form-urlencoded'

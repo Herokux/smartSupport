@@ -44,7 +44,7 @@ $(document).ready(function() {
 			var client_id = document.getElementById('client').value;
 			console.log(client_id);
 			var selectedlang = $('#child_selection').val();
-			$.post("../../Clients/coustmerdetails",{
+			$.post("../../Clients/customerdetails",{
 	           	'id': id,
 	           	'client_id': client_id,
 	           	'name': name,
@@ -53,17 +53,32 @@ $(document).ready(function() {
 	      	},
         	function(data,status){
 
-
         		if (status == 'success') {
-        			$('#myloader').css({'display' : 'none'});
-					$('#connected').css({'display' : 'block'});
-
-        			var url = '../../Customers/chatview/'+id+'/'+client_id;	
-        			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0,height=500,width=500');
+        			checkforClientApprove(id);
         		} else {
         			alert('Something went please try again!');
         		}
 			});
+
+
+
+
+			//Waiting for approval function
+			var checkforClientApprove = function(id) {
+				var myInterval = setInterval(function () {
+		            $.get("../../Clients/checkforClientApproval/" + id, function(data){
+					  	if (data == 'assigned') {
+					  		clearInterval(myInterval);
+					  		$('#myloader').css({'display' : 'none'});
+							$('#connected').css({'display' : 'block'});
+
+		        			var url = '../../Customers/chatview/'+id+'/'+client_id;	
+		        			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0,height=500,width=500');
+					  	}
+					});
+		        },1000); 
+
+			}
 		}
 	});
 });
