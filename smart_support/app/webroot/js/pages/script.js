@@ -34,10 +34,15 @@ $(document).ready(function() {
 
 	$('#submitdetails').click(function() {		
 		if(validate()) {
+			$('#myloader').css({'display' : 'block'});
+			$('#createCustomerContactForm').css({'display' : 'none'});
+
+
 			var id = Math.round(new Date().getTime()/1000);
 			var name = $('#name').val();
 			var email = $('#email').val();
-			var client_id = document.getElementById('client').innerHTML;
+			var client_id = document.getElementById('client').value;
+			console.log(client_id);
 			var selectedlang = $('#child_selection').val();
 			$.post("../../Clients/coustmerdetails",{
 	           	'id': id,
@@ -47,8 +52,13 @@ $(document).ready(function() {
 	           	'language': selectedlang
 	      	},
         	function(data,status){
+
+
         		if (status == 'success') {
-        			var url = '../../pages/chatview/'+id+'/'+client_id;	
+        			$('#myloader').css({'display' : 'none'});
+					$('#connected').css({'display' : 'block'});
+
+        			var url = '../../Customers/chatview/'+id+'/'+client_id;	
         			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0,height=500,width=500');
         		} else {
         			alert('Something went please try again!');

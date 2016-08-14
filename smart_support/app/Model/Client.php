@@ -1,6 +1,4 @@
 <?php
-App::uses('TimeHandler','Model');
-App::uses('Editor','Model');
 class Client extends AppModel
 {
 	public $belongsTo=array(
@@ -107,7 +105,7 @@ class Client extends AppModel
 
 
 	public function clientSendMessage($mydata) {
-		
+		$this->ClientMessages->save($mydata);
 	}
 
 

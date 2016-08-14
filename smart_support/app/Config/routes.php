@@ -36,9 +36,6 @@ Router::connect('/pages/support/:id', ['controller' => 'pages', 'action' => 'sup
     ['id' => '(\d|-)+', 'pass'=>['id']]
 );
 
-Router::connect('/faqs/writer/:id', ['controller' => 'faqs', 'action' => 'writer'],
-    ['id' => '\d+', 'pass'=>['id']]
-);
 
 
 /**
