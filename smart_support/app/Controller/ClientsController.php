@@ -12,21 +12,6 @@
     	           $this->set('userName', $this->Client->currentUserName($userDetails['User']['id'], $userDetails['User']['type']));
             }
         }
-
-        public function customer_message($client_id, $customer_id) {
-
-
-            $this->layout='ajax';
-            $conditions = array(
-            		'ClientMessage.customer_token_id' => $client_id
-            	);
-            $message = $this->ClientMessage->find('all', array(
-            			'conditions' => $conditions
-            		)
-            	);
-            die(json_encode($message, JSON_PRETTY_PRINT));
-        }
-
         
         public function coustmerdetails() {
             if($this->request->is('post')){

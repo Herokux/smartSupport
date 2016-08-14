@@ -49,7 +49,6 @@ $(document).ready(function() {
         	function(data,status){
         		if (status == 'success') {
         			var url = '../../pages/chatview/'+id+'/'+client_id;	
-        			alert(url);
         			window.open(url, '_blank', 'toolbar=0,location=0,menubar=0');
         		} else {
         			alert('Something went please try again!');

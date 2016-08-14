@@ -1,47 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Smart Support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <?php echo $this->Html->meta('icon','img/_webicon.png');?>
-
-    
-        <!-- ONLINE CSS SCRIPT    -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-    
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-       
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <?php echo $this->Html->css("client/dashboard"); ?>
 </head>
-
 <body ng-app="clientApp" ng-controller="clientController">
-
-
-    <!-- main structure starts from here -->
-
     <div class="main-body">
-
-
-        <!-- Toaster            -->
         <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
-        <!--Toaster day            -->
-
-
-
-        <!-- header of right side starts -->
-
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper containx">
                 <a href="#" class="brand-logo">Hack</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">View API Key</a></li>
                     <li>
                         <a class='dropdown-button' href='#' data-activates='dropdown1'><?php echo $userName; ?><i class="material-icons left">cloud</i></a>
-
-                        <!-- Dropdown Structure -->
                         <ul id='dropdown1' class='dropdown-content'>
                             <li><?php echo $this->Html->link("Logout",array('controller'=>'Users','action'=>'logout'),array('escape' => false)); ?></li>
                         </ul>
@@ -49,13 +27,19 @@
                 </ul>
             </div>
         </nav>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>API Key Information</h4>
+                <p>You API Key for smart support is : <a href="">http://localhost/project/smart_support/smart_support/pages/support/<?php
+                        echo $activeUser['User']['id']; ?></a></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+            
 
-
-
-
-      
         <div class="pageLoading">
-
             <div ng-show="loading" id="loading">
                 <div class="preloader-wrapper big active">
                     <div class="spinner-layer spinner-blue-only">
@@ -112,9 +96,6 @@
                         </ul>
 
                     </div>
-
-
-                   
                 </div>
                 <div class="input-field row">
                     <input id="icon_telephone" type="tel" class="validate" placeholder="Type">
@@ -122,27 +103,20 @@
             </div>
 
             <div class="col s3">
-                
                 <ul class="collection with-header">
                     <li class="collection-header"><h4>Waiting list</h4></li>
                     <li class="collection-item" ng-repeat="y in CustomerDetails"><div>{{y.name}}<a href="#!" class="secondary-content" ng-click="startchat(customerID)"><i class="material-icons">send</i></a></div></li>
-                    
                 </ul>
-                    
             </div>
         </div>
-
-        
     </div>
-
-    <!-- Side scripts starts from here       -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <?php
-            echo $this->Html->script('lib/angular.min.js');
-            echo $this->Html->script('lib/toaster.js');    
-            echo $this->Html->script('client/clientAppController.js');
-            echo $this->fetch('script');
+        echo $this->Html->script('lib/angular.min.js');
+        echo $this->Html->script('lib/toaster.js');    
+        echo $this->Html->script('client/clientAppController.js');
+        echo $this->Html->script('client/script.js');
     ?>
 </body>
 
