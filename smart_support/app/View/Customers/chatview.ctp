@@ -6,13 +6,20 @@
     <?php echo $this->Html->meta('icon','img/_webicon.png');?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	
-    <!-- <?php echo $this->Html->css('pages/chatview'); ?> -->
+    <?php 	 
+    	// echo $this->Html->css('pages/chatview');
+
+    ?>
+    <?php echo $this->Html->css("client/dashboard"); ?>
 </head>
 
 
 
 <body ng-app="customerApp" ng-controller="customerController">
 	<div class="contain">
+		<br>
+		<h4 class="center-align">Smart Service</h4>
+		<br>
 		<div class="row">
 			<div class="col s6 offset-s3">
 
@@ -22,7 +29,8 @@
 				<div class="card blue-grey darken-1">
 		            <div class="card-content white-text" style="height: 400px; overflow-y: scroll;">
 		                <ul ng-hide = "viewMessagebox">
-		                    <li ng-repeat="z in clientMessages">{{z.message}}</li>
+		                <div class="chatinit">New Chat Initialised</div>
+                            <div class="chatmessage" ng-class="{'right': z.sender == 'customer'}"  ng-repeat="z in clientMessages">{{z.message}} <br> </div>
 		                </ul>
 
 		            </div>

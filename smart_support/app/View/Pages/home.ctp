@@ -4,17 +4,17 @@
   <title>Smart Support</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <?php echo $this->Html->css('style.css'); ?>
 </head>
 <body>
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="./users/client_login">Login</a></li>
+        <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'client_login'));  ?></li>
         <li class="divider"></li>
-        <li><a href="./clients/signup">Signup</a></li>
+        <li><?php echo $this->Html->link('Sign up', array('controller' => 'clients', 'action' => 'signup'));  ?></li>
     </ul>
     <nav>
         <div class="nav-wrapper container">
-            <a href="#!" class="brand-logo">smartSupport</a>
+            <a href="#!" class="brand-logo">Smart Support</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>

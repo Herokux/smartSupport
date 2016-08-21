@@ -30,8 +30,9 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <h4>API Key Information</h4>
-                <p>You API Key for smart support is : <a href="">http://localhost/project/smart_support/smart_support/pages/support/<?php
-                        echo $activeUser['User']['id']; ?></a></p>
+                <p>You API Key is generated. Paste the below code on your support button to launch the chat terminal.<br></p>
+                <div style="background: #000; color: #fff; padding: 2% 6%;"> &lt;a&gt; href="http://ashimrajkonwar.me/Projects/smart_support/pages/support/<?php
+                        echo $activeUser['User']['id']; ?>" target="_blank"&lt;/a&gt;</div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
